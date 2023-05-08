@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  ## Postgres Order service
+  postgres-order:
+    container_name: postgres-order-service-kotlin
+    image: "postgres:14.1-alpine"
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  ## ActiveMQ Artemis
+  artemis:
+    container_name: artemis-kotlin
+    image: "quay.io/artemiscloud/activemq-artemis-broker-init:latest"
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+      - "5672:5672"
+    environment:
+      AMQ_USER: artemis
+      AMQ_PASSWORD: artemis

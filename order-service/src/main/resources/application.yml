@@ -16,6 +16,8 @@ spring:
     user: artemis
     password: artemis
     mode: native
+    embedded:
+      queues: test
 server:
   port: 8081
 

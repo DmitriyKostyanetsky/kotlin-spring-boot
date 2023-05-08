@@ -1,6 +1,7 @@
 package com.kostyanetskiy.orderservice.service
 
 import com.kostyanetskiy.orderservice.domain.Order
+import com.kostyanetskiy.orderservice.dto.OrderDto
 import com.kostyanetskiy.orderservice.repository.OrderRepository
 import com.kostyanetskiy.orderservice.util.OrderMessageConverter
 import lombok.RequiredArgsConstructor
@@ -15,9 +16,8 @@ import org.springframework.transaction.annotation.Transactional
 class OrderService(
     val orderRepository: OrderRepository,
     val jmsTemplate: JmsTemplate,
-    @Value("\${artemis}")
-    var queue: String,
-    val orderMessageConverter: OrderMessageConverter
+    @Value("\${spring.artemis.embedded.queues}")
+    val queueDestination: String
 ) {
 
 
@@ -28,7 +28,8 @@ class OrderService(
     @Transactional
     fun createOrder(order: Order): Order {
         val createdOrder = orderRepository.save(order)
-        jmsTemplate.convertAndSend(queue, createdOrder)
+        val orderDto = OrderDto(createdOrder.id, createdOrder.name, createdOrder.quantity)
+        jmsTemplate.convertAndSend(queueDestination, orderDto)
         return createdOrder
     }
 

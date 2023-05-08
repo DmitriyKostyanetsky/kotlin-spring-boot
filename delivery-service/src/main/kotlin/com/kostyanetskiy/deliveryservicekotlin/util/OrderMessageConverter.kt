@@ -1,10 +1,9 @@
-package com.kostyanetskiy.orderservice.util
+package com.kostyanetskiy.deliveryservicekotlin.util
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.kostyanetskiy.orderservice.domain.Order
-import com.kostyanetskiy.orderservice.dto.OrderDto
+import com.kostyanetskiy.deliveryservicekotlin.dto.OrderDto
 import jakarta.jms.Message
 import jakarta.jms.Session
 import jakarta.jms.TextMessage

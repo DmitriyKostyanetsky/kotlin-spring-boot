@@ -3,6 +3,9 @@ plugins {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-mail")
+    implementation("org.springframework.integration:spring-integration-mail")
+
     implementation("org.springframework.boot:spring-boot-starter-artemis")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

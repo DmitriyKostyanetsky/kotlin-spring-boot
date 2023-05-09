@@ -18,8 +18,24 @@ spring:
     mode: native
     embedded:
       queues: test
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password:
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
 server:
   port: 8082
+
+mail:
+  imap:
+    ssl: true
+    host: imap.gmail.com
+    port: 993
+    username:
+    password:
 
 
 artemis: "test"
